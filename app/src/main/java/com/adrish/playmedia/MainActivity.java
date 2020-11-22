@@ -27,4 +27,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void pauseMusic()
+    {
+        if(mediaPlayer != null)
+        {
+            mediaPlayer.pause();
+            playButton.setText(R.string.play);
+        }
+    }
+
+    public 
 }
