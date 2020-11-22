@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        playButton = findViewById(R.id.Play_Button);
+
         mediaPlayer = new MediaPlayer();
         try {
             mediaPlayer.setDataSource("https://gaana.com/song/chale-aana-1");
@@ -26,29 +28,34 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+        MediaPlayer.OnPreparedListener preparedListener = new MediaPlayer.OnPreparedListener() {
             @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.start();
+            public void onPrepared(final MediaPlayer mp) {
+
+                playButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (mediaPlayer.isPlaying()) {
+                            pauseMusic();
+                        }
+                        else
+                        {
+                            if(mp != null)
+                            {
+                                mp.start();
+                                playButton.setText(R.string.pause_text);
+                            }
+                        }
+                    }
+                });
             }
-        });
+        };
+        mediaPlayer.setOnPreparedListener(preparedListener);
 
         mediaPlayer.prepareAsync();
         //mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.kalimba);
 
-        playButton = findViewById(R.id.Play_Button);
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mediaPlayer.isPlaying()) {
-                    pauseMusic();
-                }
-                else
-                {
-                    playMusic();
-                }
-            }
-        });
+
     }
 
     public void pauseMusic()
