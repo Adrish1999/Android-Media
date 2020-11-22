@@ -25,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.start();
+            }
+        });
+
+        mediaPlayer.prepareAsync();
         //mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.kalimba);
 
         playButton = findViewById(R.id.Play_Button);
