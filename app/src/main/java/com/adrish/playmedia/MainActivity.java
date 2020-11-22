@@ -35,16 +35,14 @@ public class MainActivity extends AppCompatActivity {
                 playButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (mediaPlayer.isPlaying()) {
-                            pauseMusic();
+                        if (mp.isPlaying()) {
+                            mp.pause();
+                            playButton.setText(R.string.play_text);
                         }
                         else
                         {
-                            if(mp != null)
-                            {
-                                mp.start();
-                                playButton.setText(R.string.pause_text);
-                            }
+                            mp.start();
+                            playButton.setText(R.string.pause_text);
                         }
                     }
                 });
