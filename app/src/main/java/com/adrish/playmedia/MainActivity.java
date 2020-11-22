@@ -48,5 +48,14 @@ public class MainActivity extends AppCompatActivity {
             playButton.setText(R.string.pause_text);
         }
     }
-    
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mediaPlayer != null)
+        {
+            mediaPlayer.pause();
+            mediaPlayer.release();
+        }
+    }
 }
