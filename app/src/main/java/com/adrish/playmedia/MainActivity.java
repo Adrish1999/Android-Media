@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.IOException;
+
+//https://gaana.com/song/chale-aana-1
 public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private Button playButton;
@@ -17,7 +20,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mediaPlayer = new MediaPlayer();
-        mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.kalimba);
+        try {
+            mediaPlayer.setDataSource("https://gaana.com/song/chale-aana-1");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.kalimba);
 
         playButton = findViewById(R.id.Play_Button);
         playButton.setOnClickListener(new View.OnClickListener() {
