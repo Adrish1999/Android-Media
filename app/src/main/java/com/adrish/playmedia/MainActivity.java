@@ -56,23 +56,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void pauseMusic()
-    {
-        if(mediaPlayer != null)
-        {
-            mediaPlayer.pause();
-            playButton.setText(R.string.play_text);
-        }
-    }
-
-    public void playMusic()
-    {
-        if(mediaPlayer != null)
-        {
-            mediaPlayer.start();
-            playButton.setText(R.string.pause_text);
-        }
-    }
+//    public void pauseMusic()
+//    {
+//        if(mediaPlayer != null)
+//        {
+//            mediaPlayer.pause();
+//            playButton.setText(R.string.play_text);
+//        }
+//    }
+//
+//    public void playMusic()
+//    {
+//        if(mediaPlayer != null)
+//        {
+//            mediaPlayer.start();
+//            playButton.setText(R.string.pause_text);
+//        }
+//    }
 
     @Override
     protected void onDestroy() {
