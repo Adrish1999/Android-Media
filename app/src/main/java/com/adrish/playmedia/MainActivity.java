@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private Button playButton;
+    private SeekBar seekBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         playButton = findViewById(R.id.Play_Button);
+        seekBar = findViewById(R.id.seekBarId);
 
         mediaPlayer = new MediaPlayer();
         try {
@@ -62,6 +65,24 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer.prepareAsync();
         //mediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.kalimba);
 
+        seekBar.setMax(mediaPlayer.getDuration());
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
     }
 
