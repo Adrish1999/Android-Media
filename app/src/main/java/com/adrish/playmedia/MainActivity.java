@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         mediaPlayer = new MediaPlayer();
         try {
-            mediaPlayer.setDataSource("https://gaana.com/song/chale-aana-1");
+            mediaPlayer.setDataSource("http://buildappswithpaulo.com/music/watch_me.mp3");
         } catch (IOException e) {
             e.printStackTrace();
         }
