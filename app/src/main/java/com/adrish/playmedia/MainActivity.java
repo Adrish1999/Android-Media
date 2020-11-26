@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.io.IOException;
 
@@ -28,6 +29,14 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                int duration = mp.getDuration(); // in 1000
+                Toast.makeText(MainActivity.this,String.valueOf((duration/1000)/60),Toast.LENGTH_LONG).show();
+            }
+        });
         MediaPlayer.OnPreparedListener preparedListener = new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(final MediaPlayer mp) {
